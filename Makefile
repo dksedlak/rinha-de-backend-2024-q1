@@ -29,7 +29,7 @@ test: lint ## runs all the unit tests
 test-integration: ## runs all the integrations tests
 	@echo "-> start [integration tests]"
 	@docker-compose up -d
-	@sleep 2.5
+	@sleep 5
 	@export ENABLE_INTEGRATION_TEST=1 && go test -count=1 -v -cover -race ./...
 	@docker-compose down --remove-orphans --volumes
 	@echo "-> done [integration tests]"

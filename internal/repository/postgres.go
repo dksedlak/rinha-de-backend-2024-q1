@@ -10,8 +10,7 @@ import (
 
 	"github.com/cenkalti/backoff/v4"
 	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
-	"github.com/gofrs/uuid"
-	pgType "github.com/jackc/pgx/pgtype/ext/gofrs-uuid"
+	"github.com/google/uuid"
 	_ "github.com/jackc/pgx/v5/stdlib" // adds the pgx driver
 	"github.com/jmoiron/sqlx"
 	"github.com/rs/zerolog/log"
@@ -41,14 +40,14 @@ type balance struct {
 	Limit            int64
 	Amount           int64
 	LastTransactions []TransactionObject
-	LastCommit       pgType.UUID
+	LastCommit       uuid.UUID
 }
 
 type TransactionObject struct {
-	TransactionType string    `json:"type"`
-	Description     string    `json:"description"`
-	Value           int64     `json:"value"`
-	CreatedAt       time.Time `json:"created_at"`
+	Type        string    `json:"type"`
+	Description string    `json:"description"`
+	Value       int64     `json:"value"`
+	CreatedAt   time.Time `json:"created_at"`
 }
 
 func NewPostgreSQL(ctx context.Context, cfg PgConfig) (*PostgreSQL, error) {
@@ -133,21 +132,20 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 	if len(currentBalance.LastTransactions) >= 10 {
 		tmp := currentBalance.LastTransactions[1:]
 		currentBalance.LastTransactions = append(tmp, TransactionObject{
-			TransactionType: string(transaction.Type),
-			Description:     transaction.Description,
-			Value:           transaction.Value,
-			CreatedAt:       transaction.CreatedAt,
+			Type:        string(transaction.Type),
+			Description: transaction.Description,
+			Value:       transaction.Value,
+			CreatedAt:   transaction.CreatedAt,
 		})
 	} else {
 		currentBalance.LastTransactions = append(currentBalance.LastTransactions, TransactionObject{
-			TransactionType: string(transaction.Type),
-			Description:     transaction.Description,
-			Value:           transaction.Value,
-			CreatedAt:       transaction.CreatedAt,
+			Type:        string(transaction.Type),
+			Description: transaction.Description,
+			Value:       transaction.Value,
+			CreatedAt:   transaction.CreatedAt,
 		})
 	}
 
-	newUUID, _ := uuid.NewV4()
 	query := `
 		UPDATE balances
 		SET
@@ -157,7 +155,6 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 		WHERE client_id = $4 AND last_commit = $5
 	`
 
-	// safe area - start
 	tx, err := pg.db.BeginTx(ctx, nil)
 	if err != nil {
 		return fmt.Errorf("failed to begin tx: %w", err)
@@ -166,7 +163,7 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 	if _, err := pg.db.ExecContext(ctx, query,
 		newAmount,
 		currentBalance.LastTransactions,
-		newUUID.String(),
+		uuid.NewString(),
 		clientID,
 		currentBalance.LastCommit,
 	); err != nil {
@@ -174,7 +171,6 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 		return ErrConcurrencyRequest
 	}
 
-	// safe area - end
 	if err := tx.Commit(); err != nil {
 		return fmt.Errorf("failed to commit tx: %w", err)
 	}

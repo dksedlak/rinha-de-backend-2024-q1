@@ -3,10 +3,12 @@ package repository
 import (
 	"context"
 	"fmt"
+	"time"
+
+	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
 )
 
 func (suite *pgTestSuite) TestDefaultClientBalance() {
-	require := suite.Require()
 	ctx := context.Background()
 
 	testGroup := []struct {
@@ -49,11 +51,78 @@ func (suite *pgTestSuite) TestDefaultClientBalance() {
 	for _, test := range testGroup {
 		suite.Run(fmt.Sprintf("test the default balance of the client: %d", test.ClientID), func() {
 			balance, err := suite.repository.getClientBalance(ctx, test.ClientID)
-			require.Equal(test.ExpectedError, err)
+			suite.Assert().Equal(test.ExpectedError, err)
 
 			if err == nil {
-				require.NotNil(balance, "balance should have the previous transaction")
-				require.Equal(test.ExpectedLimit, balance.Limit)
+				suite.Assert().NotNil(balance, "balance should have the previous transaction")
+				suite.Assert().Equal(test.ExpectedLimit, balance.Limit)
+			}
+		})
+	}
+}
+
+func (suite *pgTestSuite) TestAddNewTransaction() {
+	ctx := context.Background()
+
+	testGroup := []struct {
+		ClientID      int
+		Transaction   internal.Transaction
+		ExpectedError error
+	}{
+		{
+			ClientID: 1,
+			Transaction: internal.Transaction{
+				Value:       1,
+				Type:        internal.TransactionDebit,
+				Description: "any description here",
+				CreatedAt:   time.Now(),
+			},
+			ExpectedError: nil,
+		},
+		{
+			ClientID: 1,
+			Transaction: internal.Transaction{
+				Value:       100000,
+				Type:        internal.TransactionDebit,
+				Description: "random",
+				CreatedAt:   time.Now(),
+			},
+			ExpectedError: ErrInsufficientLimit,
+		},
+		{
+			ClientID: 1,
+			Transaction: internal.Transaction{
+				Value:       99999,
+				Type:        internal.TransactionDebit,
+				Description: "random2 - success",
+				CreatedAt:   time.Now(),
+			},
+			ExpectedError: nil,
+		},
+		{
+			ClientID: 1,
+			Transaction: internal.Transaction{
+				Value:       1,
+				Type:        internal.TransactionDebit,
+				Description: "error",
+				CreatedAt:   time.Now(),
+			},
+			ExpectedError: ErrInsufficientLimit,
+		},
+	}
+
+	for _, test := range testGroup {
+		suite.Run(fmt.Sprintf("test the default balance of the client: %d", test.ClientID), func() {
+			err := suite.repository.AddNewTransaction(ctx, test.ClientID, test.Transaction)
+			suite.Assert().Equal(test.ExpectedError, err)
+			if err == nil {
+				balance, err := suite.repository.getClientBalance(ctx, test.ClientID)
+				last := len(balance.LastTransactions) - 1
+				suite.Assert().NoError(err)
+				suite.Assert().NotEmpty(balance.LastTransactions)
+				suite.Assert().True(test.Transaction.CreatedAt.Equal(balance.LastTransactions[last].CreatedAt))
+				suite.Assert().Equal(string(test.Transaction.Type), balance.LastTransactions[last].Type)
+				suite.Assert().Equal(test.Transaction.Description, balance.LastTransactions[last].Description)
 			}
 		})
 	}
