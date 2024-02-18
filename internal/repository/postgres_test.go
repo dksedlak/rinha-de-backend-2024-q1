@@ -2,30 +2,62 @@ package repository
 
 import (
 	"context"
-	"time"
-
-	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
+	"fmt"
 )
 
-func (suite *pgTestSuite) TestCreateTransaction() {
+func (suite *pgTestSuite) TestDefaultClientBalance() {
 	require := suite.Require()
-	clientID := 1
 	ctx := context.Background()
-	input := internal.Transaction{
-		Value:       1000,
-		Type:        internal.TransactionCredit,
-		Description: "any random description here",
-		CreatedAt:   time.Now().UTC(),
+
+	testGroup := []struct {
+		ClientID      int
+		ExpectedLimit uint64
+		ExpectedError error
+	}{
+		{
+			ClientID:      1,
+			ExpectedLimit: 100000,
+			ExpectedError: nil,
+		},
+		{
+			ClientID:      2,
+			ExpectedLimit: 80000,
+			ExpectedError: nil,
+		},
+		{
+			ClientID:      3,
+			ExpectedLimit: 1000000,
+			ExpectedError: nil,
+		},
+		{
+			ClientID:      4,
+			ExpectedLimit: 10000000,
+			ExpectedError: nil,
+		},
+		{
+			ClientID:      5,
+			ExpectedLimit: 500000,
+			ExpectedError: nil,
+		},
+		{
+			ClientID:      6,
+			ExpectedLimit: 100000,
+			ExpectedError: ErrNotFound,
+		},
 	}
 
-	suite.Run("Creates a new transaction with success", func() {
-		err := suite.repository.CreateTransaction(ctx, clientID, input)
-		require.NoError(err)
+	for _, test := range testGroup {
+		suite.Run(fmt.Sprintf("test the default balance of the client: %d", test.ClientID), func() {
+			balance, err := suite.repository.getClientBalance(ctx, test.ClientID)
+			require.Equal(test.ExpectedError, err)
 
-		statements, err := suite.repository.GetBankStatements(ctx, clientID)
-		require.NoError(err)
-		require.NotNil(statements, "statements should have the previous transaction")
-
-		require.NotEmpty(statements.LastTransactions)
-	})
+			if err == nil {
+				require.NotNil(balance, "balance should have the previous transaction")
+				require.Equal(test.ExpectedLimit, balance.Limit)
+				require.Equal(test.ClientID, balance.ClientID)
+				require.NotEmpty(balance.LastCommit.UUID.String())
+				require.Empty(balance.LastTransactions)
+			}
+		})
+	}
 }

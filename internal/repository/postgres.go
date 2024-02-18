@@ -2,6 +2,9 @@ package repository
 
 import (
 	"context"
+	"database/sql"
+	"encoding/json"
+	"errors"
 	"fmt"
 	"time"
 
@@ -10,6 +13,12 @@ import (
 	pgType "github.com/jackc/pgx/pgtype/ext/gofrs-uuid"
 	_ "github.com/jackc/pgx/v5/stdlib" // adds the pgx driver
 	"github.com/jmoiron/sqlx"
+	"github.com/rs/zerolog/log"
+)
+
+var (
+	ErrConcurrencyRequest = errors.New("concurrency the last_commit value is different")
+	ErrNotFound           = errors.New("not found")
 )
 
 type PgConfig struct {
@@ -25,24 +34,19 @@ type PostgreSQL struct {
 	db *sqlx.DB
 }
 
-type Balance struct {
-	ClientID   int32       `db:"client_id"`
-	Limit      uint64      `db:"balance_limit"`
-	Amount     uint64      `db:"amount"`
-	LastCommit pgType.UUID `db:"last_commit"`
+type balance struct {
+	ClientID         int
+	Limit            uint64
+	Amount           uint64
+	LastTransactions []TransactionObject
+	LastCommit       pgType.UUID
 }
 
 type TransactionObject struct {
-	TransactionType string    `json:"transaction_type"`
+	TransactionType string    `json:"type"`
 	Description     string    `json:"description"`
 	Value           uint64    `json:"value"`
 	CreatedAt       time.Time `json:"created_at"`
-}
-
-type TransactionRow struct {
-	ClientID         int32       `db:"client_id"`
-	LastTransactions []byte      `db:"last_transactions"`
-	LastCommit       pgType.UUID `db:"last_commit"`
 }
 
 func NewPostgreSQL(ctx context.Context, cfg PgConfig) (*PostgreSQL, error) {
@@ -73,6 +77,38 @@ func NewPostgreSQL(ctx context.Context, cfg PgConfig) (*PostgreSQL, error) {
 
 func (pg *PostgreSQL) GetDBInstance() *sqlx.DB {
 	return pg.db
+}
+
+func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*balance, error) {
+	query := fmt.Sprintf(
+		`SELECT client_id, client_limit, amount, last_transactions, last_commit FROM balances WHERE client_id = %d;`,
+		clientID,
+	)
+
+	var record balance
+	var rawTransactions []byte
+
+	if err := pg.db.QueryRowContext(ctx, query).Scan(
+		&record.ClientID,
+		&record.Limit,
+		&record.Amount,
+		&rawTransactions,
+		&record.LastCommit,
+	); err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, ErrNotFound
+		}
+		return nil, fmt.Errorf("failed to select balance account: %w", err)
+	}
+
+	var transactions []TransactionObject
+	if err := json.Unmarshal(rawTransactions, &transactions); err != nil {
+		log.Ctx(ctx).Err(err).Msg("could not parse the transactions from database")
+		return nil, err
+	}
+
+	record.LastTransactions = transactions
+	return &record, nil
 }
 
 func (pg *PostgreSQL) CreateTransaction(ctx context.Context, clientID int, transaction internal.Transaction) error {

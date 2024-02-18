@@ -2,16 +2,9 @@ package repository
 
 import (
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
-	"fmt"
 	"os"
-	"strconv"
-	"strings"
 	"testing"
-	"time"
 
-	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
 	"github.com/jmoiron/sqlx"
 	"github.com/stretchr/testify/suite"
 )
@@ -20,63 +13,27 @@ const postgresDSN = "postgres://rinha_backend:nopassword@localhost:5432/producti
 
 type pgTestSuite struct {
 	suite.Suite
-
-	pgMain       *sqlx.DB
-	pgTest       *sqlx.DB
-	testDatabase string
-
-	repository internal.Repository
+	pg         *sqlx.DB
+	repository *PostgreSQL
 }
 
 func (suite *pgTestSuite) SetupSuite() {
 	require := suite.Require()
 
-	pgMain, err := NewPostgreSQL(context.Background(),
+	pg, err := NewPostgreSQL(context.Background(),
 		PgConfig{
 			DSN: postgresDSN,
 		},
 	)
 	require.NoError(err)
-	require.NotNil(pgMain)
+	require.NotNil(pg)
 
-	suite.pgMain = pgMain.GetDBInstance()
+	suite.pg = pg.GetDBInstance()
+	suite.repository = &PostgreSQL{db: suite.pg}
 }
 
 func (suite *pgTestSuite) TearDownSuite() {
-	suite.pgMain.Close()
-}
-
-func (suite *pgTestSuite) createTestDatabase() *sqlx.DB {
-	require := suite.Require()
-
-	hash := sha256.Sum256([]byte(suite.T().Name()))
-	suite.testDatabase = "test_" + hex.EncodeToString(hash[:])[:32] + "_" + strconv.FormatInt(time.Now().UnixNano(), 10)
-
-	_, err := suite.pgMain.ExecContext(context.Background(), "CREATE DATABASE "+suite.testDatabase)
-	require.NoError(err)
-
-	dsn := postgresDSN[0:strings.LastIndex(postgresDSN, "/")+1] +
-		suite.testDatabase +
-		postgresDSN[strings.LastIndex(postgresDSN, "?"):]
-
-	dbClient, err := NewPostgreSQL(context.Background(), PgConfig{DSN: dsn})
-	require.NoError(err)
-
-	return dbClient.GetDBInstance()
-}
-
-func (suite *pgTestSuite) SetupTest() {
-	suite.pgTest = suite.createTestDatabase()
-	suite.repository = &PostgreSQL{db: suite.pgTest}
-}
-
-func (suite *pgTestSuite) TearDownTest() {
-	suite.pgTest.Close()
-
-	_, err := suite.pgMain.Exec(
-		fmt.Sprintf("DROP DATABASE %s WITH (FORCE)", suite.testDatabase),
-	)
-	suite.Require().NoError(err)
+	suite.pg.Close()
 }
 
 func TestNewPostgres(t *testing.T) {

@@ -45,8 +45,8 @@ func main() {
 		RetryMaxTries:   3,
 		RetryInterval:   500 * time.Millisecond,
 		ConnMaxLifetime: 2 * time.Hour,
-		MaxIdleConns:    2,
-		MaxOpenConns:    4,
+		MaxIdleConns:    10,
+		MaxOpenConns:    30,
 		DSN:             cfg.PostgresDSN,
 	})
 	if err != nil {
