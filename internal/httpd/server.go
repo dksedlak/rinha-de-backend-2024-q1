@@ -41,7 +41,7 @@ func NewServer(ctx context.Context, port string, database internal.Repository) *
 		router:  router,
 		handler: handler,
 		httpServer: &http.Server{
-			Addr:              port,
+			Addr:              ":" + port,
 			MaxHeaderBytes:    maxHeaderSize,
 			ReadHeaderTimeout: readHeaderTimeout,
 			ReadTimeout:       readTimeout,

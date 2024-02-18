@@ -23,9 +23,9 @@ func mapEndpoints(handler internal.Handler) []route {
 			Handler: handler.CreateTransaction,
 		},
 		{
-			Name:    "GetTransactionsStatements",
+			Name:    "GetStatements",
 			Method:  http.MethodGet,
-			Path:    " /clientes/{id}/extrato",
+			Path:    "/clientes/{id}/extrato",
 			Handler: handler.GetStatements,
 		},
 	}
