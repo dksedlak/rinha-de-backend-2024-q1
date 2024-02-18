@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS balances(
 
 CREATE TABLE IF NOT EXISTS transactions (
     client_id INTEGER NOT NULL,
-    history JSON,
+    last_transactions JSON,
     last_commit UUID NOT NULL,
     CONSTRAINT pk_transactions PRIMARY KEY(client_id),
     CONSTRAINT fk_transactions_clients FOREIGN KEY (client_id) REFERENCES clients(id)

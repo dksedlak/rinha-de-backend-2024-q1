@@ -26,9 +26,8 @@ test: lint ## runs all the unit tests
 	@echo "-> done [unit tests]"
 
 .PHONY: test-integration
-test-integration: lint ## runs all the integrations tests
+test-integration: ## runs all the integrations tests
 	@echo "-> start [integration tests]"
-	@docker-compose up -d
 	@export ENABLE_INTEGRATION_TEST=1 && go test -count=1 -v -cover -race ./...
 	@echo "-> done [integration tests]"
 
@@ -39,16 +38,6 @@ lint: ## runs the linter
 	@go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.56.2
 	@golangci-lint run -c .golangci.yml --color always
 	@echo "-> linter executed"
-
-.PHONY: run
-run: ## starts the application with all the deps (containers)
-	@echo "-> stating all containers"
-	@docker-compose up -d
-
-.PHONY: stop
-stop: ## stops the application and all the deps (containers)
-	@echo "-> stating all containers"
-	@docker-compose down
 
 .PHONY: generate
 generate: ## creates all the mocks
