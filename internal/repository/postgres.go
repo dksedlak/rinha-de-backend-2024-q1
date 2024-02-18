@@ -10,6 +10,7 @@ import (
 
 	"github.com/cenkalti/backoff/v4"
 	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
+	"github.com/gofrs/uuid"
 	pgType "github.com/jackc/pgx/pgtype/ext/gofrs-uuid"
 	_ "github.com/jackc/pgx/v5/stdlib" // adds the pgx driver
 	"github.com/jmoiron/sqlx"
@@ -18,6 +19,7 @@ import (
 
 var (
 	ErrConcurrencyRequest = errors.New("concurrency the last_commit value is different")
+	ErrInsufficientLimit  = errors.New("insufficient limit")
 	ErrNotFound           = errors.New("not found")
 )
 
@@ -36,8 +38,8 @@ type PostgreSQL struct {
 
 type balance struct {
 	ClientID         int
-	Limit            uint64
-	Amount           uint64
+	Limit            int64
+	Amount           int64
 	LastTransactions []TransactionObject
 	LastCommit       pgType.UUID
 }
@@ -45,7 +47,7 @@ type balance struct {
 type TransactionObject struct {
 	TransactionType string    `json:"type"`
 	Description     string    `json:"description"`
-	Value           uint64    `json:"value"`
+	Value           int64     `json:"value"`
 	CreatedAt       time.Time `json:"created_at"`
 }
 
@@ -111,7 +113,71 @@ func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*bala
 	return &record, nil
 }
 
-func (pg *PostgreSQL) CreateTransaction(ctx context.Context, clientID int, transaction internal.Transaction) error {
+func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, transaction internal.Transaction) error {
+	currentBalance, err := pg.getClientBalance(ctx, clientID)
+	if err != nil {
+		return err
+	}
+
+	var newAmount int64
+	if transaction.Type == internal.TransactionCredit {
+		newAmount = currentBalance.Amount + transaction.Value
+	} else {
+		newAmount = currentBalance.Amount - transaction.Value
+	}
+
+	if (-1 * newAmount) > currentBalance.Limit {
+		return ErrInsufficientLimit
+	}
+
+	if len(currentBalance.LastTransactions) >= 10 {
+		tmp := currentBalance.LastTransactions[1:]
+		currentBalance.LastTransactions = append(tmp, TransactionObject{
+			TransactionType: string(transaction.Type),
+			Description:     transaction.Description,
+			Value:           transaction.Value,
+			CreatedAt:       transaction.CreatedAt,
+		})
+	} else {
+		currentBalance.LastTransactions = append(currentBalance.LastTransactions, TransactionObject{
+			TransactionType: string(transaction.Type),
+			Description:     transaction.Description,
+			Value:           transaction.Value,
+			CreatedAt:       transaction.CreatedAt,
+		})
+	}
+
+	newUUID, _ := uuid.NewV4()
+	query := `
+		UPDATE balances
+		SET
+			amount = $1, 
+			last_transactions = $2,
+			last_commit = $3 
+		WHERE client_id = $4 AND last_commit = $5
+	`
+
+	// safe area - start
+	tx, err := pg.db.BeginTx(ctx, nil)
+	if err != nil {
+		return fmt.Errorf("failed to begin tx: %w", err)
+	}
+
+	if _, err := pg.db.ExecContext(ctx, query,
+		newAmount,
+		currentBalance.LastTransactions,
+		newUUID.String(),
+		clientID,
+		currentBalance.LastCommit,
+	); err != nil {
+		tx.Rollback()
+		return ErrConcurrencyRequest
+	}
+
+	// safe area - end
+	if err := tx.Commit(); err != nil {
+		return fmt.Errorf("failed to commit tx: %w", err)
+	}
 
 	return nil
 }

@@ -17,9 +17,9 @@ func NewHandler(ctx context.Context, repository internal.Repository) *handler {
 	}
 }
 
-func (h *handler) CreateTransaction(w http.ResponseWriter, r *http.Request) {
+func (h *handler) AddNewTransaction(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(string(`agora vai CreateTransaction`)))
+	w.Write([]byte(string(`agora vai AddNewTransaction`)))
 }
 
 func (h *handler) GetStatements(w http.ResponseWriter, r *http.Request) {

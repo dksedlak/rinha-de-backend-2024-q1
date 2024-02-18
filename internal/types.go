@@ -10,15 +10,15 @@ const (
 )
 
 type Transaction struct {
-	Value       uint64
+	Value       int64
 	Type        TransactionType
 	Description string
 	CreatedAt   time.Time
 }
 
 type BankStatement struct {
-	Total            uint64
+	Total            int64
 	Date             time.Time
-	Limit            uint64
+	Limit            int64
 	LastTransactions []Transaction
 }

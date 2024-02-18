@@ -17,10 +17,10 @@ type route struct {
 func mapEndpoints(handler internal.Handler) []route {
 	return []route{
 		{
-			Name:    "CreateTransaction",
+			Name:    "AddNewTransaction",
 			Method:  http.MethodPost,
 			Path:    "/clientes/{id}/transacoes",
-			Handler: handler.CreateTransaction,
+			Handler: handler.AddNewTransaction,
 		},
 		{
 			Name:    "GetStatements",

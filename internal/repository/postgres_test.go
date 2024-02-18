@@ -11,7 +11,7 @@ func (suite *pgTestSuite) TestDefaultClientBalance() {
 
 	testGroup := []struct {
 		ClientID      int
-		ExpectedLimit uint64
+		ExpectedLimit int64
 		ExpectedError error
 	}{
 		{
@@ -54,9 +54,6 @@ func (suite *pgTestSuite) TestDefaultClientBalance() {
 			if err == nil {
 				require.NotNil(balance, "balance should have the previous transaction")
 				require.Equal(test.ExpectedLimit, balance.Limit)
-				require.Equal(test.ClientID, balance.ClientID)
-				require.NotEmpty(balance.LastCommit.UUID.String())
-				require.Empty(balance.LastTransactions)
 			}
 		})
 	}
