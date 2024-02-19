@@ -104,7 +104,7 @@ func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*bala
 
 	var transactions []TransactionObject
 	if err := json.Unmarshal(rawTransactions, &transactions); err != nil {
-		log.Ctx(ctx).Err(err).Msg("could not parse the transactions from database")
+		log.Err(err).Msg("could not parse the transactions from database")
 		return nil, err
 	}
 

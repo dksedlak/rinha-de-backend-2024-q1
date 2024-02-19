@@ -35,32 +35,49 @@ type AddNewTransactionResponse struct {
 	Amount int64 `json:"saldo"`
 }
 
+type TransactionsResponse struct {
+	Value       int64  `json:"valor"`
+	Type        string `json:"tipo"`
+	Description string `json:"descricao"`
+	CreatedAt   string `json:"realizada_em"`
+}
+
+type AmountResponse struct {
+	Total       int64  `json:"total"`
+	CurrentDate string `json:"data_extrato"`
+	Limit       int64  `json:"limite"`
+}
+
+type GetStatementsResponse struct {
+	Amount           AmountResponse         `json:"saldo"`
+	LastTransactions []TransactionsResponse `json:"ultimas_transacoes"`
+}
+
 func (h *handler) AddNewTransaction(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	idString, ok := mux.Vars(r)["id"]
 
 	if !ok {
-		log.Ctx(ctx).Error().Msg("wrong URI")
+		log.Error().Msg("wrong URI")
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
 	clientID, err := strconv.Atoi(idString)
 	if err != nil {
-		log.Ctx(ctx).Error().Msg("the client id needs to be an integer")
+		log.Error().Msg("the client id needs to be an integer")
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
 	var payload AddNewTransactionRequest
 	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
-		log.Ctx(ctx).Error().Msg("cannot parse the request body")
+		log.Error().Msg("cannot parse the request body")
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
 	for {
-		log.Ctx(ctx).Info().Msg("here here")
 		resume, err := h.repository.AddNewTransaction(ctx, clientID, internal.Transaction{
 			Value:       payload.Value,
 			Type:        internal.TransactionType(payload.Type),
@@ -94,16 +111,63 @@ func (h *handler) AddNewTransaction(w http.ResponseWriter, r *http.Request) {
 			Limit:  resume.Limit,
 			Amount: resume.Amount,
 		}); err != nil {
-			log.Ctx(ctx).Err(err).Msg("failed to encode the response body")
+			log.Err(err).Msg("failed to encode the response body")
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
 
-		break
+		return
 	}
 }
 
 func (h *handler) GetStatements(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	idString, ok := mux.Vars(r)["id"]
+
+	if !ok {
+		log.Error().Msg("wrong URI")
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	clientID, err := strconv.Atoi(idString)
+	if err != nil {
+		log.Error().Msg("the client id needs to be an integer")
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	bankStatements, err := h.repository.GetBankStatements(ctx, clientID)
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(string(`agora vai GetStatements`)))
+	if err := json.NewEncoder(w).Encode(GetStatementsResponse{
+		Amount: AmountResponse{
+			Total:       bankStatements.Amount,
+			Limit:       bankStatements.Limit,
+			CurrentDate: bankStatements.Date.Format(time.RFC3339Nano),
+		},
+		LastTransactions: mapTransactionsToResponse(bankStatements.LastTransactions),
+	}); err != nil {
+		log.Err(err).Msg("failed to encode the response body")
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+}
+
+func mapTransactionsToResponse(value []internal.Transaction) []TransactionsResponse {
+	result := make([]TransactionsResponse, 0, len(value))
+	for _, current := range value {
+		result = append(result, TransactionsResponse{
+			Value:       current.Value,
+			Type:        string(current.Type),
+			Description: current.Description,
+			CreatedAt:   current.CreatedAt.Format(time.RFC3339Nano),
+		})
+	}
+	return result
 }
