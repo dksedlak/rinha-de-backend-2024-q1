@@ -16,8 +16,13 @@ type Transaction struct {
 	CreatedAt   time.Time
 }
 
+type Resume struct {
+	Amount int64
+	Limit  int64
+}
+
 type BankStatement struct {
-	Total            int64
+	Amount           int64
 	Date             time.Time
 	Limit            int64
 	LastTransactions []Transaction

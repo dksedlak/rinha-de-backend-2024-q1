@@ -112,10 +112,10 @@ func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*bala
 	return &record, nil
 }
 
-func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, transaction internal.Transaction) error {
+func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, transaction internal.Transaction) (*internal.Resume, error) {
 	currentBalance, err := pg.getClientBalance(ctx, clientID)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	var newAmount int64
@@ -126,7 +126,7 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 	}
 
 	if (-1 * newAmount) > currentBalance.Limit {
-		return ErrInsufficientLimit
+		return nil, ErrInsufficientLimit
 	}
 
 	if len(currentBalance.LastTransactions) >= 10 {
@@ -157,7 +157,7 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 
 	tx, err := pg.db.BeginTx(ctx, nil)
 	if err != nil {
-		return fmt.Errorf("failed to begin tx: %w", err)
+		return nil, fmt.Errorf("failed to begin tx: %w", err)
 	}
 
 	if _, err := pg.db.ExecContext(ctx, query,
@@ -168,16 +168,40 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 		currentBalance.LastCommit,
 	); err != nil {
 		tx.Rollback()
-		return ErrConcurrencyRequest
+		return nil, ErrConcurrencyRequest
 	}
 
 	if err := tx.Commit(); err != nil {
-		return fmt.Errorf("failed to commit tx: %w", err)
+		return nil, fmt.Errorf("failed to commit tx: %w", err)
 	}
 
-	return nil
+	return &internal.Resume{
+		Amount: newAmount,
+		Limit:  currentBalance.Limit,
+	}, nil
 }
 
 func (pg *PostgreSQL) GetBankStatements(ctx context.Context, clientID int) (*internal.BankStatement, error) {
-	return nil, nil
+	balance, err := pg.getClientBalance(ctx, clientID)
+	if err != nil {
+		return nil, err
+	}
+
+	transactions := make([]internal.Transaction, 0, len(balance.LastTransactions))
+
+	for _, tmp := range balance.LastTransactions {
+		transactions = append(transactions, internal.Transaction{
+			Value:       tmp.Value,
+			Type:        internal.TransactionType(tmp.Type),
+			Description: tmp.Description,
+			CreatedAt:   tmp.CreatedAt,
+		})
+	}
+
+	return &internal.BankStatement{
+		Amount:           balance.Amount,
+		Date:             time.Now(),
+		Limit:            balance.Limit,
+		LastTransactions: transactions,
+	}, nil
 }

@@ -113,16 +113,14 @@ func (suite *pgTestSuite) TestAddNewTransaction() {
 
 	for _, test := range testGroup {
 		suite.Run(fmt.Sprintf("test the default balance of the client: %d", test.ClientID), func() {
-			err := suite.repository.AddNewTransaction(ctx, test.ClientID, test.Transaction)
+			resume, err := suite.repository.AddNewTransaction(ctx, test.ClientID, test.Transaction)
 			suite.Assert().Equal(test.ExpectedError, err)
 			if err == nil {
 				balance, err := suite.repository.getClientBalance(ctx, test.ClientID)
-				last := len(balance.LastTransactions) - 1
 				suite.Assert().NoError(err)
 				suite.Assert().NotEmpty(balance.LastTransactions)
-				suite.Assert().True(test.Transaction.CreatedAt.Equal(balance.LastTransactions[last].CreatedAt))
-				suite.Assert().Equal(string(test.Transaction.Type), balance.LastTransactions[last].Type)
-				suite.Assert().Equal(test.Transaction.Description, balance.LastTransactions[last].Description)
+				suite.Assert().Equal(resume.Limit, balance.Limit)
+				suite.Assert().Equal(resume.Amount, balance.Amount)
 			}
 		})
 	}
