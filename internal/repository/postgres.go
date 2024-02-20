@@ -154,15 +154,27 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 			last_commit = $3 
 		WHERE client_id = $4 AND last_commit = $5
 	`
+	tx, err := pg.db.BeginTx(ctx, &sql.TxOptions{
+		Isolation: sql.LevelSnapshot,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("failed to begin tx: %w", err)
+	}
 
-	if _, err := pg.db.ExecContext(ctx, query,
+	if _, err := tx.ExecContext(ctx, query,
 		newAmount,
 		currentBalance.LastTransactions,
 		uuid.NewString(),
 		clientID,
 		currentBalance.LastCommit,
 	); err != nil {
+		tx.Rollback()
 		return nil, ErrConcurrencyRequest
+	}
+
+	if err := tx.Commit(); err != nil {
+		tx.Rollback()
+		return nil, fmt.Errorf("failed to commit tx: %w", err)
 	}
 
 	return &internal.Resume{

@@ -31,7 +31,7 @@ type AddNewTransactionRequest struct {
 }
 
 type AddNewTransactionResponse struct {
-	Limit  int64 `json:"limit"`
+	Limit  int64 `json:"limite"`
 	Amount int64 `json:"saldo"`
 }
 
