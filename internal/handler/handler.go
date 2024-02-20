@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 	"strconv"
 	"time"
@@ -59,63 +60,56 @@ func (h *handler) AddNewTransaction(w http.ResponseWriter, r *http.Request) {
 
 	if !ok {
 		log.Error().Msg("wrong URI")
-		w.WriteHeader(http.StatusBadRequest)
+		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
 	clientID, err := strconv.Atoi(idString)
 	if err != nil {
 		log.Error().Msg("the client id needs to be an integer")
-		w.WriteHeader(http.StatusBadRequest)
+		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
 	var payload AddNewTransactionRequest
 	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
 		log.Error().Msg("cannot parse the request body")
-		w.WriteHeader(http.StatusBadRequest)
+		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
-	for {
-		resume, err := h.repository.AddNewTransaction(ctx, clientID, internal.Transaction{
-			Value:       payload.Value,
-			Type:        internal.TransactionType(payload.Type),
-			Description: payload.Description,
-			CreatedAt:   time.Now(),
-		})
+	// validate the payload
+	if err := validatePayload(payload); err != nil {
+		w.WriteHeader(http.StatusUnprocessableEntity)
+		return
+	}
 
-		if err != nil {
-			if errors.Is(err, repository.ErrConcurrencyRequest) {
-				continue
-			}
+	resume, err := h.repository.AddNewTransaction(ctx, clientID, internal.Transaction{
+		Value:       payload.Value,
+		Type:        internal.TransactionType(payload.Type),
+		Description: payload.Description,
+		CreatedAt:   time.Now(),
+	})
 
-			if errors.Is(err, repository.ErrNotFound) {
-				w.WriteHeader(http.StatusNotFound)
-				return
-			}
-
-			if errors.Is(err, repository.ErrInsufficientLimit) {
-				w.WriteHeader(http.StatusUnprocessableEntity)
-				return
-			}
-
-			w.WriteHeader(http.StatusInternalServerError)
+	if err != nil {
+		if errors.Is(err, repository.ErrNotFound) {
+			w.WriteHeader(http.StatusNotFound)
 			return
 		}
 
-		w.Header().Add("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+		w.WriteHeader(http.StatusUnprocessableEntity)
+		return
+	}
 
-		if err := json.NewEncoder(w).Encode(AddNewTransactionResponse{
-			Limit:  resume.Limit,
-			Amount: resume.Amount,
-		}); err != nil {
-			log.Err(err).Msg("failed to encode the response body")
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
+	w.Header().Add("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
 
+	if err := json.NewEncoder(w).Encode(AddNewTransactionResponse{
+		Limit:  resume.Limit,
+		Amount: resume.Amount,
+	}); err != nil {
+		log.Err(err).Msg("failed to encode the response body")
+		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 }
@@ -126,20 +120,25 @@ func (h *handler) GetStatements(w http.ResponseWriter, r *http.Request) {
 
 	if !ok {
 		log.Error().Msg("wrong URI")
-		w.WriteHeader(http.StatusBadRequest)
+		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
 	clientID, err := strconv.Atoi(idString)
 	if err != nil {
 		log.Error().Msg("the client id needs to be an integer")
-		w.WriteHeader(http.StatusBadRequest)
+		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
 	bankStatements, err := h.repository.GetBankStatements(ctx, clientID)
 	if err != nil {
-		w.WriteHeader(http.StatusNotFound)
+		if errors.Is(err, repository.ErrNotFound) {
+			w.WriteHeader(http.StatusNotFound)
+			return
+		}
+
+		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
@@ -153,10 +152,26 @@ func (h *handler) GetStatements(w http.ResponseWriter, r *http.Request) {
 		LastTransactions: mapTransactionsToResponse(bankStatements.LastTransactions),
 	}); err != nil {
 		log.Err(err).Msg("failed to encode the response body")
-		w.WriteHeader(http.StatusInternalServerError)
+		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
+}
+
+func validatePayload(payload AddNewTransactionRequest) error {
+	if payload.Value < 0 {
+		return fmt.Errorf("invalid value: %d", payload.Value)
+	}
+
+	if payload.Type != "c" && payload.Type != "d" {
+		return fmt.Errorf("invalid type: %s", payload.Type)
+	}
+
+	if len(payload.Description) < 1 || len(payload.Description) > 10 {
+		return fmt.Errorf("invalid description: %s | length: %d", payload.Description, len(payload.Description))
+	}
+
+	return nil
 }
 
 func mapTransactionsToResponse(value []internal.Transaction) []TransactionsResponse {

@@ -10,14 +10,13 @@ import (
 
 	"github.com/cenkalti/backoff/v4"
 	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
-	"github.com/google/uuid"
 	_ "github.com/jackc/pgx/v5/stdlib" // adds the pgx driver
 	"github.com/jmoiron/sqlx"
 	"github.com/rs/zerolog/log"
 )
 
 var (
-	ErrConcurrencyRequest = errors.New("concurrency the last_commit value is different")
+	ErrConcurrencyRequest = errors.New("concurrency updating the row")
 	ErrInsufficientLimit  = errors.New("insufficient limit")
 	ErrNotFound           = errors.New("not found")
 )
@@ -40,7 +39,6 @@ type balance struct {
 	Limit            int64
 	Amount           int64
 	LastTransactions []TransactionObject
-	LastCommit       uuid.UUID
 }
 
 type TransactionObject struct {
@@ -82,7 +80,7 @@ func (pg *PostgreSQL) GetDBInstance() *sqlx.DB {
 
 func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*balance, error) {
 	query := fmt.Sprintf(
-		`SELECT client_id, client_limit, amount, last_transactions, last_commit FROM balances WHERE client_id = %d;`,
+		`SELECT client_id, client_limit, amount, last_transactions FROM balances WHERE client_id = %d;`,
 		clientID,
 	)
 
@@ -94,7 +92,6 @@ func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*bala
 		&record.Limit,
 		&record.Amount,
 		&rawTransactions,
-		&record.LastCommit,
 	); err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			return nil, ErrNotFound
@@ -113,32 +110,58 @@ func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*bala
 }
 
 func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, transaction internal.Transaction) (*internal.Resume, error) {
-	currentBalance, err := pg.getClientBalance(ctx, clientID)
+	tx, err := pg.db.BeginTx(ctx, &sql.TxOptions{
+		//Isolation: sql.LevelRepeatableRead,
+	})
 	if err != nil {
+		log.Err(err).Msg("failed to begin tx")
+		return nil, fmt.Errorf("failed to begin tx: %w", err)
+	}
+	defer tx.Rollback()
+
+	var rawTransactions []byte
+	var limit int64
+	var amount int64
+
+	query := fmt.Sprintf(`SELECT client_limit, amount, last_transactions FROM balances WHERE client_id = %d;`, clientID)
+
+	if err := tx.QueryRowContext(ctx, query).Scan(
+		&limit,
+		&amount,
+		&rawTransactions,
+	); err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, ErrNotFound
+		}
+		return nil, fmt.Errorf("failed to query the row: %w", err)
+	}
+
+	var lastTransactions []TransactionObject
+	if err := json.Unmarshal(rawTransactions, &lastTransactions); err != nil {
+		log.Err(err).Msg("could not parse the transactions from database")
 		return nil, err
 	}
 
-	var newAmount int64
 	if transaction.Type == internal.TransactionCredit {
-		newAmount = currentBalance.Amount + transaction.Value
+		amount += transaction.Value
 	} else {
-		newAmount = currentBalance.Amount - transaction.Value
+		amount -= transaction.Value
 	}
 
-	if (-1 * newAmount) > currentBalance.Limit {
+	if (-1 * amount) > limit {
 		return nil, ErrInsufficientLimit
 	}
 
-	if len(currentBalance.LastTransactions) >= 10 {
-		tmp := currentBalance.LastTransactions[1:]
-		currentBalance.LastTransactions = append(tmp, TransactionObject{
+	if len(lastTransactions) >= 10 {
+		tmp := lastTransactions[1:]
+		lastTransactions = append(tmp, TransactionObject{
 			Type:        string(transaction.Type),
 			Description: transaction.Description,
 			Value:       transaction.Value,
 			CreatedAt:   transaction.CreatedAt,
 		})
 	} else {
-		currentBalance.LastTransactions = append(currentBalance.LastTransactions, TransactionObject{
+		lastTransactions = append(lastTransactions, TransactionObject{
 			Type:        string(transaction.Type),
 			Description: transaction.Description,
 			Value:       transaction.Value,
@@ -146,41 +169,19 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 		})
 	}
 
-	query := `
-		UPDATE balances
-		SET
-			amount = $1, 
-			last_transactions = $2,
-			last_commit = $3 
-		WHERE client_id = $4 AND last_commit = $5
-	`
-	tx, err := pg.db.BeginTx(ctx, &sql.TxOptions{
-		Isolation: sql.LevelSnapshot,
-	})
-	if err != nil {
-		return nil, fmt.Errorf("failed to begin tx: %w", err)
-	}
-
+	query = `UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3`
 	if _, err := tx.ExecContext(ctx, query,
-		newAmount,
-		currentBalance.LastTransactions,
-		uuid.NewString(),
+		amount,
+		lastTransactions,
 		clientID,
-		currentBalance.LastCommit,
 	); err != nil {
-		tx.Rollback()
 		return nil, ErrConcurrencyRequest
 	}
 
-	if err := tx.Commit(); err != nil {
-		tx.Rollback()
-		return nil, fmt.Errorf("failed to commit tx: %w", err)
-	}
-
 	return &internal.Resume{
-		Amount: newAmount,
-		Limit:  currentBalance.Limit,
-	}, nil
+		Amount: amount,
+		Limit:  limit,
+	}, tx.Commit()
 }
 
 func (pg *PostgreSQL) GetBankStatements(ctx context.Context, clientID int) (*internal.BankStatement, error) {

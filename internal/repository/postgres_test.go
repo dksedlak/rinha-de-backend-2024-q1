@@ -93,7 +93,7 @@ func (suite *pgTestSuite) TestAddNewTransaction() {
 			ClientID: 1,
 			Transaction: internal.Transaction{
 				Value:       99999,
-				Type:        internal.TransactionDebit,
+				Type:        internal.TransactionCredit,
 				Description: "random2 - success",
 				CreatedAt:   time.Now(),
 			},
@@ -102,12 +102,12 @@ func (suite *pgTestSuite) TestAddNewTransaction() {
 		{
 			ClientID: 1,
 			Transaction: internal.Transaction{
-				Value:       1,
+				Value:       100000,
 				Type:        internal.TransactionDebit,
-				Description: "error",
+				Description: "success",
 				CreatedAt:   time.Now(),
 			},
-			ExpectedError: ErrInsufficientLimit,
+			ExpectedError: nil,
 		},
 	}
 

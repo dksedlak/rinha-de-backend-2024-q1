@@ -1,0 +1,1031 @@
+database       | 2024-02-20 21:04:18.540 UTC [4071] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:18.540 UTC [4071] CONTEXT:  while rechecking updated tuple (268,4) in relation "balances"
+database       | 2024-02-20 21:04:18.540 UTC [4071] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.547","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.550","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.610","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.611","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.611","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.616","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.616","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.616","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.622","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.622","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.622","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.622","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.622","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.623","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.623","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.623","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.633","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.646","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.655","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.660","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.664","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.682","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.691","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.696","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.710","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.714","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.714","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.714","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.714","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.714","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.714","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.714","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.714","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.716","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.716","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.717","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.717","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.719","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.723","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.732","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.737","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.741","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.747","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.747","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.755","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.783","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.810","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.810","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.810","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.810","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.810","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.816","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.816","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.816","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.819","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.823","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.828","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.828","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.832","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.837","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.837","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.841","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.850","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.856","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.856","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:18.909 UTC [4187] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:18.909 UTC [4187] CONTEXT:  while rechecking updated tuple (208,5) in relation "balances"
+database       | 2024-02-20 21:04:18.909 UTC [4187] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:18.909 UTC [4187] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:18.909 UTC [4187] FATAL:  connection to client lost
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.911","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.911","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.911","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.912","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.912","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.914","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.916","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.916","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.917","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.917","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.919","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.923","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.928","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.928","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.932","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.938","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.938","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:18.941","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.010","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.010","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.010","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.010","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.010","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.010","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.010","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.011","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.011","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.011","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.011","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.011","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.014","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.016","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.016","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.017","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.017","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.019","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.019","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.024","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.028","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.033","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.037","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.037","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.051","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.056","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.064","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.073","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.091","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.101","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.110 UTC [4218] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:19.110 UTC [4218] CONTEXT:  while rechecking updated tuple (267,7) in relation "balances"
+database       | 2024-02-20 21:04:19.110 UTC [4218] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.111","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.111","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.111","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.111","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.115","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.115","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.115","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.115","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.115","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.116","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.116","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.116","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.117","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.119","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.122","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.122","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.122","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.122","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.124","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.127","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.132","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.138","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.141","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.141","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.146","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.151","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.155","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.200","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.209 UTC [4218] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:19.209 UTC [4218] FATAL:  connection to client lost
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.210","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.210","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.211","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.211","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.211","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.211","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.211","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.216","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.216","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.216","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.218","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.224","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.227","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.228","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.232","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.236","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.243","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.245","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.247","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.251","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.256","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.273","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.282","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.301","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.306","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.310","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.310","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.310","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.310","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.314","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.314","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.314","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.314","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.314","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.319","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.319","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.325","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.327","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.328","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.332","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.337","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.337","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.343","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.346","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.355","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.355","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.361","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.365","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.365","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.368","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.373","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.375","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.378","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.391","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.410","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.410","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.410","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.410 UTC [4170] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:19.410 UTC [4170] CONTEXT:  while rechecking updated tuple (274,1) in relation "balances"
+database       | 2024-02-20 21:04:19.410 UTC [4170] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.410","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.410","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.410","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.411","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.410","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.412 UTC [3957] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:19.412 UTC [3957] CONTEXT:  while updating tuple (274,1) in relation "balances"
+database       | 2024-02-20 21:04:19.412 UTC [3957] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.418","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.419","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.425","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.427","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.437","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.487","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.506","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.510","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.510","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.510","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.510","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.510","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.511","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.511","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.511","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.511","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.511","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.511","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.511","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.511","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.512","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.512","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.512","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.515","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.519","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.519","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.524","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.527","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.532","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.537","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.537","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.541","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.547","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.547","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.555","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.555","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.560","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.565","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.568","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.573","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.575","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.577","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.582","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.600","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.609","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.610","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.610","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.610","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.610","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.610","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.611 UTC [4308] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:19.611 UTC [4308] CONTEXT:  while rechecking updated tuple (270,7) in relation "balances"
+database       | 2024-02-20 21:04:19.611 UTC [4308] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.612","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.613 UTC [4136] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:19.613 UTC [4136] CONTEXT:  while rechecking updated tuple (272,3) in relation "balances"
+database       | 2024-02-20 21:04:19.613 UTC [4136] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.615","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.615","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.618","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.618","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.627","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.627","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.632","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.636","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.636","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.642","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.647","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.650","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.654","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.654","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.672","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.682","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.688","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.700","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.709","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.710","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.710","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.710","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.710","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.710","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.710","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.710","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.713","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.718","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.718","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.723","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.727","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.727","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.732","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.738","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.738","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.746","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.746","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.751","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.755","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.755","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.760","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.768","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.777","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.787","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.709 UTC [4206] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:19.709 UTC [4206] CONTEXT:  while rechecking updated tuple (270,7) in relation "balances"
+database       | 2024-02-20 21:04:19.709 UTC [4206] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:19.810 UTC [4245] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:19.810 UTC [4245] CONTEXT:  while rechecking updated tuple (272,3) in relation "balances"
+database       | 2024-02-20 21:04:19.810 UTC [4245] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.810","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.810","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.810","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.811 UTC [4287] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:19.811 UTC [4287] CONTEXT:  while rechecking updated tuple (273,4) in relation "balances"
+database       | 2024-02-20 21:04:19.811 UTC [4287] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.810","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.810","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.815","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.818","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.823","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.832","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.838","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.838","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.843","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.847","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.847","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.851","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.856","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.860","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.864","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.864","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.868","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.873","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.900","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.909","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:19.909 UTC [4206] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:19.909 UTC [4245] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:19.909 UTC [4245] FATAL:  connection to client lost
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.912","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.911","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.912","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.916","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.916","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.919","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.919","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.924","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.933","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.937","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.946","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.946","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.954","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.955","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.959","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.965","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.969","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.972","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:19.987","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.009 UTC [4285] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.009 UTC [4285] CONTEXT:  while rechecking updated tuple (272,3) in relation "balances"
+database       | 2024-02-20 21:04:20.009 UTC [4285] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:20.009 UTC [4206] FATAL:  connection to client lost
+database       | 2024-02-20 21:04:20.009 UTC [4285] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:20.009 UTC [4285] FATAL:  connection to client lost
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.010","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.010","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.010","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.010 UTC [4179] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.010 UTC [4179] CONTEXT:  while rechecking updated tuple (274,4) in relation "balances"
+database       | 2024-02-20 21:04:20.010 UTC [4179] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.011","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.011","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.011","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.011","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.011","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.011","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.011","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.011","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.012","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.014","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.017","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.018","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.023","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.027","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.032","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.036","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.037","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.042","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.047","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.051","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.055","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.055","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.060","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.064","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.065","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.068","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.073","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.077","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.081","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.082","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.109","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.110 UTC [4318] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.110 UTC [4318] CONTEXT:  while rechecking updated tuple (272,5) in relation "balances"
+database       | 2024-02-20 21:04:20.110 UTC [4318] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.110","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.110","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.110","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.110","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.110","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.110","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.110","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.111","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.114","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.117","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.119","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.124","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.127","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.128","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.132","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.136","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.137","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.142","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.145","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.150","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.154","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.161","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.165","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.168","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.172","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.177","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.182","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.182","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.187","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.192","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.192","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.209 UTC [4160] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.209 UTC [4160] CONTEXT:  while rechecking updated tuple (274,4) in relation "balances"
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.209","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.209 UTC [4160] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:20.209 UTC [4082] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.209 UTC [4082] CONTEXT:  while rechecking updated tuple (275,4) in relation "balances"
+database       | 2024-02-20 21:04:20.209 UTC [4082] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:20.209 UTC [4160] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:20.209 UTC [4160] FATAL:  connection to client lost
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.210","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.210","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.214","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.218","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.223","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.227","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.227","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.232","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.236","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.238","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.242","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.246","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.250","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.254","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.254","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.260","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.264","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.268","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.273","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.282","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.300","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.310","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.310","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.310","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.310","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.311","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.311","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.314","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.316","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.316","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.323","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.323","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.323","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.327","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.327","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.333","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.337","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.337","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.343","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.346","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.346","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.354","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.355","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.361","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.364","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.364","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.374","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.391","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.404","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.409 UTC [4082] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:20.409 UTC [4082] FATAL:  connection to client lost
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.410","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.410","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.410 UTC [4274] ERROR:  canceling statement due to user request
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.410","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.410 UTC [4274] CONTEXT:  while rechecking updated tuple (274,5) in relation "balances"
+database       | 2024-02-20 21:04:20.410 UTC [4274] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.410","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.411","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.411 UTC [4279] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.411 UTC [4279] CONTEXT:  while updating tuple (272,5) in relation "balances"
+database       | 2024-02-20 21:04:20.411 UTC [4279] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.412","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.413","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.415","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.420","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.424","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.435","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.436","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.444","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.450","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.461","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.471","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.509 UTC [4333] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.509 UTC [4333] CONTEXT:  while rechecking updated tuple (274,5) in relation "balances"
+database       | 2024-02-20 21:04:20.509 UTC [4333] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:20.509 UTC [4273] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.509 UTC [4273] CONTEXT:  while locking tuple (276,2) in relation "balances"
+database       | 2024-02-20 21:04:20.509 UTC [4273] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.510","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.511","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.511","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.511","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.512","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.512","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.514","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.515","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.516","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.516","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.516","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.516","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.516","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.517","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.521","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.523","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.523","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.532","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.565","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.596","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.609 UTC [4333] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:20.609 UTC [4333] FATAL:  connection to client lost
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.610","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.610","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.610","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.610","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.611","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.611","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.615","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.616","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.616","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.616","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.616","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.619","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.622","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.622","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.622","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.625","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.626","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.631","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.634","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.637","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.642","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.648","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.650","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.650","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.664","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.709 UTC [4273] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:20.709 UTC [4273] FATAL:  connection to client lost
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.710","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.710","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.710","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.710","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.710 UTC [4299] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.710 UTC [4299] CONTEXT:  while rechecking updated tuple (276,2) in relation "balances"
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.710","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.710 UTC [4299] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.710","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:20.711 UTC [4313] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:20.711 UTC [4313] CONTEXT:  while locking tuple (276,2) in relation "balances"
+database       | 2024-02-20 21:04:20.711 UTC [4313] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.711","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.713","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.713","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.713","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.714","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.715","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.721","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.725","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.725","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.730","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.731","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.735","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.741","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.742","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.784","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.791","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.802","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.810","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.810","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.810","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.810","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.812","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.812","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.812","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.820","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.824","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.824","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.829","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.832","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.833","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.838","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.845","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.849","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.878","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.885","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.904","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.910","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.912","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.913","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.916","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.916","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.922","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.922","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.924","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.930","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.947","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:20.953","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.010","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.010","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.010","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.010","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.011","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.012","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:21.012 UTC [4297] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:21.012 UTC [4297] CONTEXT:  while rechecking updated tuple (277,2) in relation "balances"
+database       | 2024-02-20 21:04:21.012 UTC [4297] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.012","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.012","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.012","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.012","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.012","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.012","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.012","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.016","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.017","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.017","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.023","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.025","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.029","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.044","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.046","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.049","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:21.109 UTC [4353] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:21.109 UTC [4353] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:21.109 UTC [4347] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:21.109 UTC [4347] CONTEXT:  while rechecking updated tuple (279,4) in relation "balances"
+database       | 2024-02-20 21:04:21.109 UTC [4347] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:21.110 UTC [4347] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:21.110 UTC [4347] FATAL:  connection to client lost
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.110","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.110","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:21.110 UTC [4194] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:21.110 UTC [4194] CONTEXT:  while rechecking updated tuple (277,2) in relation "balances"
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.110","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.110","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:21.110 UTC [4194] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.110","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.110","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.110","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.111","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.112","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.112","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.116","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.116","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.117","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.117","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.117","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.117","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.117","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.117","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.117","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.117","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.123","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.128","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.136","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.136","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.144","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.145","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.210","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.211","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.211","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.212","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.212","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.212","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.213","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.219","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.227","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.227","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.234","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:21.309 UTC [4361] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:21.309 UTC [4361] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:21.309 UTC [4254] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:21.309 UTC [4254] CONTEXT:  while locking tuple (279,5) in relation "balances"
+database       | 2024-02-20 21:04:21.309 UTC [4254] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+database       | 2024-02-20 21:04:21.309 UTC [4361] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:21.309 UTC [4254] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:21.309 UTC [4254] FATAL:  connection to client lost
+database       | 2024-02-20 21:04:21.310 UTC [4361] FATAL:  connection to client lost
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.310","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.310","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.311","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.312","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.313","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.316","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.316","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.323","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.328","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.331","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.346","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.346","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.356","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.410","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.410","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.410","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:21.411 UTC [4290] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:21.411 UTC [4290] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.411","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.412","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.416","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.416","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.416","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.416","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.417","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.418","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.424","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.429","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.443","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.450","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.455","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.474","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.491","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.510","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.510","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.510","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.510","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.510","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.511","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.511","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.511","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.511","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.512","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.512","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.516","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.516","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.516","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.516","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.516","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.516","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.516","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.517","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.517","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.520","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.524","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.528","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.533","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.538","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.564","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:21.609 UTC [4362] ERROR:  canceling statement due to user request
+database       | 2024-02-20 21:04:21.609 UTC [4362] CONTEXT:  while updating tuple (276,5) in relation "balances"
+database       | 2024-02-20 21:04:21.609 UTC [4362] STATEMENT:  UPDATE balances SET amount = $1, last_transactions = $2 WHERE client_id = $3
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.611","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.613","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.613","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.613","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.613","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.613","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.613","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.613","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.613","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.616","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.616","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.617","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.619","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.624","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.629","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.637","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.637","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.643","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.655","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.665","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.682","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.682","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:21.710 UTC [4362] LOG:  could not send data to client: Broken pipe
+database       | 2024-02-20 21:04:21.710 UTC [4362] FATAL:  connection to client lost
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.711","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.712","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.712","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.712","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.712","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.712","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.712","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.715","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.716","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.716","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.716","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.716","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.718","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.719","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.730","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.733","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.737","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.737","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.747","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.747","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.750","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.755","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.768","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.773","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.779","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.782","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.791","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.791","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.796","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.811","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.811","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.812","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.817","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.817","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.817","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.817","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.825","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.829","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.829","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.837","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.843","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.846","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.848","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.851","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.856","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.861","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.864","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.864","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.911","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.916","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.920","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.920","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.925","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.929","message":"failed to begin tx"}
+service-02     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.929","message":"failed to begin tx"}
+service-01     | {"level":"error","pid":1,"error":"context canceled","time":"2024-02-20 21:04:21.936","message":"failed to begin tx"}
+database       | 2024-02-20 21:04:52.219 UTC [71] LOG:  checkpoint starting: time
+database       | 2024-02-20 21:05:23.637 UTC [71] LOG:  checkpoint complete: wrote 324 buffers (2.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=31.376 s, sync=0.019 s, total=31.418 s; sync files=21, longest=0.005 s, average=0.001 s; distance=17491 kB, estimate=17491 kB; lsn=0/2A2BBB8, redo lsn=0/2A2BB80
