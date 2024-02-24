@@ -126,7 +126,7 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 	var creditLimit, balance int64
 
 	tx, err := pg.db.BeginTx(ctx, &sql.TxOptions{
-		Isolation: sql.LevelReadCommitted,
+		Isolation: sql.LevelDefault,
 	})
 	if err != nil {
 		return nil, err
@@ -159,17 +159,14 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 	})
 	if row.Err() != nil {
 		tx.Rollback()
-		fmt.Printf("ERROR ROW: %s\n", row.Err())
-		return nil, fmt.Errorf("failed to select balance account: %w", row.Err())
+		return nil, ErrInsufficientLimit
 	}
 
 	if err := row.Scan(
 		&creditLimit,
 		&balance,
 	); err != nil {
-		tx.Rollback()
-		fmt.Printf("ERROR: %s\n", err)
-		return nil, fmt.Errorf("failed to select balance account: %w", err)
+		return nil, ErrNotFound
 	}
 
 	tx.Commit()
@@ -188,12 +185,13 @@ func (pg *PostgreSQL) GetBankStatements(ctx context.Context, clientID int) (*int
 
 	transactions := make([]internal.Transaction, 0, len(account.LastTransactions))
 
-	for _, tmp := range account.LastTransactions {
+	size := len(account.LastTransactions)
+	for idx := size - 1; idx >= 0; idx-- {
 		transactions = append(transactions, internal.Transaction{
-			Value:       tmp.Value,
-			Type:        internal.TransactionType(tmp.Type),
-			Description: tmp.Description,
-			CreatedAt:   tmp.CreatedAt,
+			Value:       account.LastTransactions[idx].Value,
+			Type:        internal.TransactionType(account.LastTransactions[idx].Type),
+			Description: account.LastTransactions[idx].Description,
+			CreatedAt:   account.LastTransactions[idx].CreatedAt,
 		})
 	}
 

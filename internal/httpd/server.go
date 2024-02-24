@@ -19,12 +19,12 @@ type server struct {
 }
 
 const (
-	maxRequestSize    = 5 * 1024 // 5 KB
-	maxHeaderSize     = 1024     // 1 KB
-	readHeaderTimeout = 2 * time.Second
-	shutdownTimeout   = 2 * time.Second
-	readTimeout       = 2 * time.Second
-	writeTimeout      = 2 * time.Second
+	maxRequestSize    = 256 * 1024 // 256 KB
+	maxHeaderSize     = 256 * 1024 // 256 KB
+	readHeaderTimeout = 5 * time.Second
+	shutdownTimeout   = 5 * time.Second
+	readTimeout       = 5 * time.Second
+	writeTimeout      = 5 * time.Second
 )
 
 func NewServer(ctx context.Context, port string, database internal.Repository) *server {
