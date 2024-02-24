@@ -8,12 +8,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cenkalti/backoff/v4"
+	"github.com/cenkalti/backoff"
 	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
-	"github.com/google/uuid"
 	_ "github.com/jackc/pgx/v5/stdlib" // adds the pgx driver
 	"github.com/jmoiron/sqlx"
-	"github.com/rs/zerolog/log"
+	"github.com/lib/pq"
 )
 
 var (
@@ -35,12 +34,11 @@ type PostgreSQL struct {
 	db *sqlx.DB
 }
 
-type balance struct {
-	ClientID         int
-	Limit            int64
-	Amount           int64
+type Account struct {
+	ID               int
+	CreditLimit      int64
+	Balance          int64
 	LastTransactions []TransactionObject
-	LastCommit       uuid.UUID
 }
 
 type TransactionObject struct {
@@ -80,21 +78,17 @@ func (pg *PostgreSQL) GetDBInstance() *sqlx.DB {
 	return pg.db
 }
 
-func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*balance, error) {
-	query := fmt.Sprintf(
-		`SELECT client_id, client_limit, amount, last_transactions, last_commit FROM balances WHERE client_id = %d;`,
-		clientID,
-	)
+func (pg *PostgreSQL) getAccount(ctx context.Context, clientID int) (*Account, error) {
+	query := "SELECT id, credit_limit, balance, last_transactions FROM accounts WHERE id = $1"
 
-	var record balance
-	var rawTransactions []byte
+	var record Account
+	var rawTransactions pq.StringArray
 
-	if err := pg.db.QueryRowContext(ctx, query).Scan(
-		&record.ClientID,
-		&record.Limit,
-		&record.Amount,
+	if err := pg.db.QueryRowContext(ctx, query, clientID).Scan(
+		&record.ID,
+		&record.CreditLimit,
+		&record.Balance,
 		&rawTransactions,
-		&record.LastCommit,
 	); err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			return nil, ErrNotFound
@@ -102,10 +96,19 @@ func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*bala
 		return nil, fmt.Errorf("failed to select balance account: %w", err)
 	}
 
-	var transactions []TransactionObject
-	if err := json.Unmarshal(rawTransactions, &transactions); err != nil {
-		log.Err(err).Msg("could not parse the transactions from database")
-		return nil, err
+	transactions := make([]TransactionObject, 0, len(rawTransactions))
+
+	var tmp TransactionObject
+	for _, current := range rawTransactions {
+		if err := json.Unmarshal([]byte(current), &tmp); err != nil {
+			return nil, fmt.Errorf("failed to unmarshal LastTransactions: %w", err)
+		}
+		transactions = append(transactions, TransactionObject{
+			Type:        tmp.Type,
+			Description: tmp.Description,
+			Value:       tmp.Value,
+			CreatedAt:   tmp.CreatedAt,
+		})
 	}
 
 	record.LastTransactions = transactions
@@ -113,73 +116,79 @@ func (pg *PostgreSQL) getClientBalance(ctx context.Context, clientID int) (*bala
 }
 
 func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, transaction internal.Transaction) (*internal.Resume, error) {
-	currentBalance, err := pg.getClientBalance(ctx, clientID)
+	var operator string
+	if transaction.Type == internal.TransactionCredit {
+		operator = "+"
+	} else {
+		operator = "-"
+	}
+
+	var creditLimit, balance int64
+
+	tx, err := pg.db.BeginTx(ctx, &sql.TxOptions{
+		Isolation: sql.LevelReadCommitted,
+	})
 	if err != nil {
 		return nil, err
 	}
 
-	var newAmount int64
-	if transaction.Type == internal.TransactionCredit {
-		newAmount = currentBalance.Amount + transaction.Value
-	} else {
-		newAmount = currentBalance.Amount - transaction.Value
+	query := fmt.Sprintf(`
+		WITH updated_data AS (
+			SELECT id, credit_limit, balance, last_transactions
+			FROM accounts
+			WHERE id = $1
+			FOR UPDATE
+		)
+		UPDATE accounts
+		SET balance = updated_data.balance %s $2,
+		last_transactions =
+			CASE WHEN array_length(updated_data.last_transactions, 1) > 10
+				THEN COALESCE(updated_data.last_transactions[2:array_length(updated_data.last_transactions, 1)], ARRAY[]::JSON[]) || ARRAY[$3]::JSON[]
+				ELSE COALESCE(updated_data.last_transactions, ARRAY[]::JSON[]) || ARRAY[$3]::JSON[]
+			END
+		FROM updated_data
+		WHERE accounts.id = $1
+		RETURNING accounts.credit_limit, accounts.balance;
+	`, operator)
+
+	row := tx.QueryRowContext(ctx, query, clientID, transaction.Value, TransactionObject{
+		Type:        string(transaction.Type),
+		Description: transaction.Description,
+		Value:       transaction.Value,
+		CreatedAt:   transaction.CreatedAt,
+	})
+	if row.Err() != nil {
+		tx.Rollback()
+		fmt.Printf("ERROR ROW: %s\n", row.Err())
+		return nil, fmt.Errorf("failed to select balance account: %w", row.Err())
 	}
 
-	if (-1 * newAmount) > currentBalance.Limit {
-		return nil, ErrInsufficientLimit
-	}
-
-	if len(currentBalance.LastTransactions) >= 10 {
-		tmp := currentBalance.LastTransactions[1:]
-		currentBalance.LastTransactions = append(tmp, TransactionObject{
-			Type:        string(transaction.Type),
-			Description: transaction.Description,
-			Value:       transaction.Value,
-			CreatedAt:   transaction.CreatedAt,
-		})
-	} else {
-		currentBalance.LastTransactions = append(currentBalance.LastTransactions, TransactionObject{
-			Type:        string(transaction.Type),
-			Description: transaction.Description,
-			Value:       transaction.Value,
-			CreatedAt:   transaction.CreatedAt,
-		})
-	}
-
-	query := `
-		UPDATE balances
-		SET
-			amount = $1, 
-			last_transactions = $2,
-			last_commit = $3 
-		WHERE client_id = $4 AND last_commit = $5
-	`
-
-	if _, err := pg.db.ExecContext(ctx, query,
-		newAmount,
-		currentBalance.LastTransactions,
-		uuid.NewString(),
-		clientID,
-		currentBalance.LastCommit,
+	if err := row.Scan(
+		&creditLimit,
+		&balance,
 	); err != nil {
-		return nil, ErrConcurrencyRequest
+		tx.Rollback()
+		fmt.Printf("ERROR: %s\n", err)
+		return nil, fmt.Errorf("failed to select balance account: %w", err)
 	}
+
+	tx.Commit()
 
 	return &internal.Resume{
-		Amount: newAmount,
-		Limit:  currentBalance.Limit,
+		Amount: balance,
+		Limit:  creditLimit,
 	}, nil
 }
 
 func (pg *PostgreSQL) GetBankStatements(ctx context.Context, clientID int) (*internal.BankStatement, error) {
-	balance, err := pg.getClientBalance(ctx, clientID)
+	account, err := pg.getAccount(ctx, clientID)
 	if err != nil {
 		return nil, err
 	}
 
-	transactions := make([]internal.Transaction, 0, len(balance.LastTransactions))
+	transactions := make([]internal.Transaction, 0, len(account.LastTransactions))
 
-	for _, tmp := range balance.LastTransactions {
+	for _, tmp := range account.LastTransactions {
 		transactions = append(transactions, internal.Transaction{
 			Value:       tmp.Value,
 			Type:        internal.TransactionType(tmp.Type),
@@ -189,9 +198,9 @@ func (pg *PostgreSQL) GetBankStatements(ctx context.Context, clientID int) (*int
 	}
 
 	return &internal.BankStatement{
-		Amount:           balance.Amount,
+		Amount:           account.Balance,
 		Date:             time.Now(),
-		Limit:            balance.Limit,
+		Limit:            account.CreditLimit,
 		LastTransactions: transactions,
 	}, nil
 }
