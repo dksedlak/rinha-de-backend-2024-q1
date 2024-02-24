@@ -57,7 +57,6 @@ type GetStatementsResponse struct {
 func (h *handler) AddNewTransaction(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	idString, ok := mux.Vars(r)["id"]
-
 	if !ok {
 		log.Error().Msg("wrong URI")
 		w.WriteHeader(http.StatusUnprocessableEntity)
@@ -80,6 +79,7 @@ func (h *handler) AddNewTransaction(w http.ResponseWriter, r *http.Request) {
 
 	// validate the payload
 	if err := validatePayload(payload); err != nil {
+		log.Error().Msg("validate the paylod")
 		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
@@ -108,7 +108,6 @@ func (h *handler) AddNewTransaction(w http.ResponseWriter, r *http.Request) {
 		Limit:  resume.Limit,
 		Amount: resume.Amount,
 	}); err != nil {
-		log.Err(err).Msg("failed to encode the response body")
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}

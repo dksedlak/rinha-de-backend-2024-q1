@@ -4,12 +4,9 @@ go 1.22.0
 
 require (
 	github.com/caarlos0/env/v6 v6.10.1
-	github.com/cenkalti/backoff v2.2.1+incompatible
 	github.com/gorilla/mux v1.8.1
 	github.com/jackc/pgx/v5 v5.5.3
-	github.com/jmoiron/sqlx v1.3.5
 	github.com/joho/godotenv v1.5.1
-	github.com/lib/pq v1.2.0
 	github.com/rs/zerolog v1.32.0
 )
 

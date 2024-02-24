@@ -12,10 +12,3 @@ INSERT INTO accounts(id, credit_limit, balance, last_transactions) VALUES(2,    
 INSERT INTO accounts(id, credit_limit, balance, last_transactions) VALUES(3,  1000000, 0, ARRAY[]::JSON[]);
 INSERT INTO accounts(id, credit_limit, balance, last_transactions) VALUES(4, 10000000, 0, ARRAY[]::JSON[]);
 INSERT INTO accounts(id, credit_limit, balance, last_transactions) VALUES(5,   500000, 0, ARRAY[]::JSON[]);
-
-CREATE TABLE IF NOT EXISTS accounts(
-    id INTEGER NOT NULL,
-    credit_limit BIGINT NOT NULL,
-    balance BIGINT NOT NULL,
-    CONSTRAINT pk_balance PRIMARY KEY(id)
-);

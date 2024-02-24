@@ -42,10 +42,8 @@ func main() {
 
 	//nolint:gomnd
 	pgRepository, err := repository.NewPostgreSQL(ctx, repository.PgConfig{
-		RetryMaxTries:   200,
-		RetryInterval:   5 * time.Millisecond,
-		ConnMaxLifetime: 2 * time.Hour,
-		MaxIdleConns:    50,
+		ConnMaxLifetime: 2 * time.Second,
+		MaxIdleTime:     2 * time.Second,
 		MaxOpenConns:    100,
 		DSN:             cfg.PostgresDSN,
 	})
