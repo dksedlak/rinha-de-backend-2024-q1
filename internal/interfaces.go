@@ -11,6 +11,6 @@ type Handler interface {
 }
 
 type Repository interface {
-	AddNewTransaction(ctx context.Context, clientID int, transaction Transaction) (*Resume, error)
-	GetBankStatements(ctx context.Context, clientID int) (*BankStatement, error)
+	AddNewTransaction(ctx context.Context, accountID int, transaction Transaction) (*Resume, error)
+	GetBankStatements(ctx context.Context, accountID int) (*BankStatement, error)
 }

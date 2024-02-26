@@ -12,7 +12,6 @@ import (
 	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
 	"github.com/dksedlak/rinha-de-backend-2024-q1/internal/repository"
 	"github.com/gorilla/mux"
-	"github.com/rs/zerolog/log"
 )
 
 type handler struct {
@@ -58,33 +57,29 @@ func (h *handler) AddNewTransaction(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	idString, ok := mux.Vars(r)["id"]
 	if !ok {
-		log.Error().Msg("wrong URI")
 		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
-	clientID, err := strconv.Atoi(idString)
+	accountID, err := strconv.Atoi(idString)
 	if err != nil {
-		log.Error().Msg("the client id needs to be an integer")
 		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
 	var payload AddNewTransactionRequest
 	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
-		log.Error().Msg("cannot parse the request body")
 		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
 	// validate the payload
 	if err := validatePayload(payload); err != nil {
-		log.Error().Msg("validate the paylod")
 		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
-	resume, err := h.repository.AddNewTransaction(ctx, clientID, internal.Transaction{
+	resume, err := h.repository.AddNewTransaction(ctx, accountID, internal.Transaction{
 		Value:       payload.Value,
 		Type:        internal.TransactionType(payload.Type),
 		Description: payload.Description,
@@ -118,19 +113,17 @@ func (h *handler) GetStatements(w http.ResponseWriter, r *http.Request) {
 	idString, ok := mux.Vars(r)["id"]
 
 	if !ok {
-		log.Error().Msg("wrong URI")
 		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
-	clientID, err := strconv.Atoi(idString)
+	accountID, err := strconv.Atoi(idString)
 	if err != nil {
-		log.Error().Msg("the client id needs to be an integer")
 		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}
 
-	bankStatements, err := h.repository.GetBankStatements(ctx, clientID)
+	bankStatements, err := h.repository.GetBankStatements(ctx, accountID)
 	if err != nil {
 		if errors.Is(err, repository.ErrNotFound) {
 			w.WriteHeader(http.StatusNotFound)
@@ -150,7 +143,6 @@ func (h *handler) GetStatements(w http.ResponseWriter, r *http.Request) {
 		},
 		LastTransactions: mapTransactionsToResponse(bankStatements.LastTransactions),
 	}); err != nil {
-		log.Err(err).Msg("failed to encode the response body")
 		w.WriteHeader(http.StatusUnprocessableEntity)
 		return
 	}

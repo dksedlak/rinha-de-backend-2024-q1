@@ -5,7 +5,6 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
 	"github.com/dksedlak/rinha-de-backend-2024-q1/internal"
 	"github.com/dksedlak/rinha-de-backend-2024-q1/internal/httpd"
@@ -41,12 +40,7 @@ func main() {
 	log.Info().Msg("connection to the database (PostgreSQL) ...")
 
 	//nolint:gomnd
-	pgRepository, err := repository.NewPostgreSQL(ctx, repository.PgConfig{
-		ConnMaxLifetime: 2 * time.Second,
-		MaxIdleTime:     2 * time.Second,
-		MaxOpenConns:    100,
-		DSN:             cfg.PostgresDSN,
-	})
+	pgRepository, err := repository.NewPostgreSQL(ctx, cfg.PostgresDSN)
 	if err != nil {
 		log.Error().AnErr("error", err).Msg("failed to create postgres client")
 	}

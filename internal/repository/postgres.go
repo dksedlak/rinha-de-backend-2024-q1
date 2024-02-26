@@ -12,19 +12,9 @@ import (
 )
 
 var (
-	ErrConcurrencyRequest = errors.New("concurrency the last_commit value is different")
-	ErrInsufficientLimit  = errors.New("insufficient limit")
-	ErrNotFound           = errors.New("not found")
+	ErrInsufficientLimit = errors.New("insufficient limit")
+	ErrNotFound          = errors.New("not found")
 )
-
-type PgConfig struct {
-	DSN             string
-	RetryMaxTries   uint64
-	MaxOpenConns    int
-	MaxIdleTime     time.Duration
-	RetryInterval   time.Duration
-	ConnMaxLifetime time.Duration
-}
 
 type PostgreSQL struct {
 	db *pgxpool.Pool
@@ -44,8 +34,8 @@ type TransactionObject struct {
 	CreatedAt   time.Time `json:"created_at"`
 }
 
-func NewPostgreSQL(ctx context.Context, cfg PgConfig) (*PostgreSQL, error) {
-	db, err := pgxpool.New(ctx, cfg.DSN)
+func NewPostgreSQL(ctx context.Context, PostgresDSN string) (*PostgreSQL, error) {
+	db, err := pgxpool.New(ctx, PostgresDSN)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +49,7 @@ func (pg *PostgreSQL) GetDBInstance() *pgxpool.Pool {
 	return pg.db
 }
 
-func (pg *PostgreSQL) getAccount(ctx context.Context, clientID int) (*Account, error) {
+func (pg *PostgreSQL) getAccount(ctx context.Context, accountID int) (*Account, error) {
 	row := pg.db.QueryRow(ctx, `
         SELECT
             id,
@@ -72,7 +62,7 @@ func (pg *PostgreSQL) getAccount(ctx context.Context, clientID int) (*Account, e
             id = $1
         GROUP BY
             id, credit_limit, balance
-    `, clientID)
+    `, accountID)
 
 	var account Account
 	var lastTransactionsJSON string
@@ -95,7 +85,7 @@ func (pg *PostgreSQL) getAccount(ctx context.Context, clientID int) (*Account, e
 	return &account, nil
 }
 
-func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, transaction internal.Transaction) (*internal.Resume, error) {
+func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, accountID int, transaction internal.Transaction) (*internal.Resume, error) {
 	var operator string
 	if transaction.Type == internal.TransactionCredit {
 		operator = "+"
@@ -121,7 +111,7 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 					ELSE COALESCE(last_transactions, ARRAY[]::JSON[]) || ARRAY[$3]::JSON[]
 				END
 		WHERE id = $1
-		RETURNING credit_limit, balance`, operator), clientID, transaction.Value, TransactionObject{
+		RETURNING credit_limit, balance`, operator), accountID, transaction.Value, TransactionObject{
 			Type:        string(transaction.Type),
 			Description: transaction.Description,
 			Value:       transaction.Value,
@@ -142,8 +132,8 @@ func (pg *PostgreSQL) AddNewTransaction(ctx context.Context, clientID int, trans
 	}, nil
 }
 
-func (pg *PostgreSQL) GetBankStatements(ctx context.Context, clientID int) (*internal.BankStatement, error) {
-	account, err := pg.getAccount(ctx, clientID)
+func (pg *PostgreSQL) GetBankStatements(ctx context.Context, accountID int) (*internal.BankStatement, error) {
+	account, err := pg.getAccount(ctx, accountID)
 	if err != nil {
 		return nil, ErrNotFound
 	}
